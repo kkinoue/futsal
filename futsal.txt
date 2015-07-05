@@ -1,0 +1,40 @@
+futsal
+フットサルのサークルに参加している人に次回以降のイベント予定と参加確認を行うスケジュール管理アプリ。
+
+* model
+
++ User
+- name
+- email_address
+- password
+- type (一般、管理者、ゲスト)
+
++ Event
+- title
+- datetime
+- place
+- memo
+
++ Invitation
+- attendance 出席
+- absence    欠席 booleanで出席と排他関係
+- comment
+- UserとEventの多対多関連
+
+
+* 機能
++ ユーザー登録
+- ユーザー登録＝一般ユーザー登録
+- 管理者ユーザーのみ管理者ユーザーを追加可能
+
++ イベント登録
++ イベント出欠メール通知（いったん機能作成保留）
++ イベント出欠登録
++ イベント出欠状況確認
++ イベント出欠登録催促メール通知（いったん機能作成保留）
++ 管理者ユーザーのみ、ユーザー一覧
+
+
+* 参考
+http://g-schedule.com/
+
