@@ -5,7 +5,7 @@ futsal
 
 + User
 - name
-- email_address
+- email
 - password
 - type (一般、管理者、ゲスト)
 
