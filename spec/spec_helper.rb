@@ -90,3 +90,22 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+
+
+# カスタムマッチャー定義
+
+# not null 制約
+RSpec::Matchers.define :have_not_null_constraint_on do |field|
+  match do |model|
+    model.send("#{field}=", nil)
+    begin
+      model.save!(validate: false)
+      false
+    rescue ActiveRecord::StatementInvalid
+      true
+    end
+  end
+
+  description { "have NOT NULL constraint on #{field}" }
+  failure_message { "expected to have NOT NULL constraint on #{field}, but not" }
+end
