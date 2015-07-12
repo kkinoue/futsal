@@ -5,10 +5,10 @@ class User < ActiveRecord::Base
   validates :name, presence: true,
                    length: { maximum: 50 }
 
-  validates :email_address, presence: true,
-                            format: { with: VALID_EMAIL_REGEX },
-                            uniqueness: { case_sensitive: false }
+  validates :email, presence: true,
+                    format: { with: VALID_EMAIL_REGEX },
+                    uniqueness: { case_sensitive: false }
 
-  before_save { email_address && email_address.downcase! }
+  before_save { email && email.downcase! }
 
 end

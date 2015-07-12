@@ -7,21 +7,21 @@ RSpec.describe User, type: :model do
 
   describe '属性' do
     it { should respond_to(:name) }
-    it { should respond_to(:email_address) }
+    it { should respond_to(:email) }
 
     context 'when name is not present' do
       before { user.name = '' }
       it { should_not be_valid }
     end
 
-    context 'when email_address is not present' do
-      before { user.email_address = '' }
+    context 'when email is not present' do
+      before { user.email = '' }
       it { should_not be_valid }
     end
 
     describe 'テーブルの制約' do
       it { should have_not_null_constraint_on(:name) }
-      it { should have_not_null_constraint_on(:email_address) }
+      it { should have_not_null_constraint_on(:email) }
     end
   end
 
