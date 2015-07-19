@@ -16,7 +16,22 @@ class User < ActiveRecord::Base
   # ・password
   # ・password_confirmation
   # DBには password_digest カラムに暗号化された値が保存される
+  validates :password, length: { minimum: 1 }
 
-  # validates :password, length: { minimum: 6 }
+  # 平文のトークンを生成
+  def self.new_remember_token
+    SecureRandom.urlsafe_base64
+  end
+
+  def self.encrypt(token)
+    Digest::SHA1.hexdigest(token.to_s)
+  end
+
+  private
+
+    def create_remember_token
+      # user#remember_token は暗号化した値
+      self.remember_token = User.encrypt(User.new_remember_token)
+    end
 
 end

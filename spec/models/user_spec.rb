@@ -14,6 +14,7 @@ RSpec.describe User, type: :model do
     it { should respond_to(:password_digest) }
     it { should respond_to(:password) }
     it { should respond_to(:password_confirmation) }
+    it { should respond_to(:remember_token) }
 
     context 'when name is not present' do
       before { user.name = '' }
