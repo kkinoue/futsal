@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   resources :users
 
+  match '/signup', to: 'users#new', via: 'get'
+
   root 'users#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
