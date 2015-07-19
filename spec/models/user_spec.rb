@@ -2,12 +2,18 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { User.new(name:'user-name',
+                        email:'user@mail.com',
+                        password:'foobar',
+                        password_confirmation:'foobar') }
   subject { user }
 
   describe '属性' do
     it { should respond_to(:name) }
     it { should respond_to(:email) }
+    it { should respond_to(:password_digest) }
+    it { should respond_to(:password) }
+    it { should respond_to(:password_confirmation) }
 
     context 'when name is not present' do
       before { user.name = '' }
