@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  get 'events/new'
+
   match '/signup' , to: 'users#new'       , via: 'get'
   match '/signin' , to: 'sessions#new'    , via: 'get'
   match '/signout', to: 'sessions#destroy', via: 'delete'

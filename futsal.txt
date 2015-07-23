@@ -11,9 +11,10 @@ futsal
 
 + Event
 - title
-- datetime
-- place
-- memo
+- starttime
+- endtime
+- location
+- description
 
 + Invitation
 - attendance 出席
