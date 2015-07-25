@@ -9,10 +9,15 @@
 #  updated_at      :datetime         not null
 #  password_digest :string
 #  remember_token  :string
+#  type            :string           default("general")
 #
 
 class User < ActiveRecord::Base
 
+  # column name type を普通のcolumnとして使用する
+  self.inheritance_column = :_type_disabled
+
+  # emailは全て小文字でDB保存
   before_save { email && email.downcase! }
 
   # bofore_create は save の後に新規レコードの場合に実行される
@@ -32,6 +37,18 @@ class User < ActiveRecord::Base
   # ・password_confirmation
   # DBには password_digest カラムに暗号化された値が保存される
   validates :password, length: { minimum: 1 }
+
+  def admin?
+    type == 'admin'
+  end
+
+  def general?
+    type == 'general'
+  end
+
+  def guest?
+    !admin? && !general?
+  end
 
   # 平文のトークンを生成
   def self.new_remember_token

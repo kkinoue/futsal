@@ -2,6 +2,6 @@
 
 <ul class="users">
   <% @users.each do |user| %>
-  <li><%= user.name %> | <%= user.email %></li>
+  <li><%= user.name %> | <%= user.email %> | <%= user.type %></li>
   <% end %>
 </ul>

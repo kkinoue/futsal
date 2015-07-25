@@ -19,3 +19,17 @@
   <%= f.label :password_confirmation, "Confirm Password" %>
   <%= f.password_field :password_confirmation, class: 'form-control' %>
 </div>
+
+<% if signed_in? && current_user.admin? %>
+  <div clss="form-group">
+    <%= f.label :type %>
+    <%= f.radio_button :type, 'general', class: 'form-control' %>
+    <%= f.label :type, '一般', value: 'general' %>
+
+    <%= f.radio_button :type, 'admin', class: 'form-control' %>
+    <%= f.label :type, '管理者', value: 'admin' %>
+
+    <%= f.radio_button :type, 'guest', class: 'form-control' %>
+    <%= f.label :type, 'ゲスト', value: 'guest' %>
+  </div>
+<% end %>
