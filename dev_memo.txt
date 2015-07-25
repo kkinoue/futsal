@@ -1,0 +1,11 @@
+* Command memo
+
+# rake db:migrate
+develop環境のDBにmigrateファイルを実行
+
+# rake db:test:prepare
+test環境のDBをdev環境からコピーして構築
+
+# bundle exec annotate
+modelのschema情報をmodelファイルに追記（annotate gem）
+
