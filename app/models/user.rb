@@ -12,7 +12,11 @@
 #
 
 class User < ActiveRecord::Base
+
   before_save { email && email.downcase! }
+
+  # bofore_create は save の後に新規レコードの場合に実行される
+  before_create :create_remember_token
 
   validates :name, presence: true,
                    length: { maximum: 50 }
@@ -21,8 +25,6 @@ class User < ActiveRecord::Base
   validates :email, presence: true,
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
-
-
 
   has_secure_password
   # has_secure_password によって以下の属性が定義される
