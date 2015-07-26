@@ -17,9 +17,16 @@ require 'rails_helper'
 RSpec.describe Event, type: :model do
 
   let(:event) { Event.new(title:'タイトル',
-                          datetime:'2015/7/19 18:00',
-                          place:'foobar',
-                          memo:'foobar') }
-  subject { user }
+                          starttime:'2015/7/19 18:00',
+                          endtime:'2015/7/19 20:00',
+                          location:'foobar',
+                          description:'foobar') }
+  subject { event }
+
+  it { should respond_to(:title) }
+  it { should respond_to(:starttime) }
+  it { should respond_to(:endtime) }
+  it { should respond_to(:location) }
+  it { should respond_to(:description) }
 
 end
