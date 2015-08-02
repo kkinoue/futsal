@@ -28,25 +28,21 @@
 
         <div class="form-group">
           <%= f.label :start_time %>
-          <div class="bootstrap-datetime">
-            <%= f.datetime_select(
-                        :start_time,
-                        use_month_numbers: true,
-                        start_year: now.year,
-                        end_year: now.year + 1 )
-            %>
+          <div class='input-group date datepicker'>
+            <%= f.text_field :start_time, class: 'form-control' %>
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-calendar"></span>
+            </span>
           </div>
         </div>
 
         <div class="form-group">
           <%= f.label :end_time %>
-          <div class="bootstrap-datetime">
-            <%= f.datetime_select(
-                        :end_time,
-                        use_month_numbers: true,
-                        start_year: now.year,
-                        end_year: now.year + 1 )
-            %>
+          <div class='input-group date datepicker'>
+            <%= f.text_field :end_time, class: 'form-control' %>
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-calendar"></span>
+            </span>
           </div>
         </div>
 

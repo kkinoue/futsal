@@ -22,6 +22,8 @@ gem 'sprockets'
 gem 'faker' # ダミーデータ作成
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem 'momentjs-rails'
+gem 'bootstrap3-datetimepicker-rails'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
