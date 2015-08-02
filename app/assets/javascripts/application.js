@@ -19,7 +19,7 @@
 //= require bootstrap-datetimepicker
 
 var data = {'data-date-format': 'yyyy-MM-dd hh:mm:ss' };
-$(function(){
+$(document).on('ready page:load', function(){
     $('.datepicker').attr(data);
     $('.datepicker').datetimepicker();
 });
