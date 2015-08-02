@@ -1,35 +1,49 @@
 <%= render 'shared/error_messages', object: f.object %>
 
-<div clss="form-group">
-  <%= f.label :name %>
-  <%= f.text_field :name, class: 'form-control' %>
+<div class="form-group">
+  <%= f.label :name, class: 'control-label col-sm-3' %>
+  <div class="col-sm-9">
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
 </div>
 
-<div clss="form-group">
-  <%= f.label :email %>
-  <%= f.text_field :email, class: 'form-control' %>
+<div class="form-group">
+  <%= f.label :email, class: 'control-label col-sm-3' %>
+  <div class="col-sm-9">
+    <%= f.text_field :email, class: 'form-control' %>
+  </div>
 </div>
 
-<div clss="form-group">
-  <%= f.label :password %>
-  <%= f.password_field :password, class: 'form-control' %>
+<div class="form-group">
+  <%= f.label :password, class: 'control-label col-sm-3' %>
+  <div class="col-sm-9">
+    <%= f.password_field :password, class: 'form-control' %>
+  </div>
 </div>
 
-<div clss="form-group">
-  <%= f.label :password_confirmation, "Confirm Password" %>
-  <%= f.password_field :password_confirmation, class: 'form-control' %>
+<div class="form-group">
+  <%= f.label :password_confirmation, "Confirm Password", class: 'control-label col-sm-3' %>
+  <div class="col-sm-9">
+    <%= f.password_field :password_confirmation, class: 'form-control' %>
+  </div>
 </div>
 
 <% if signed_in? && current_user.admin? %>
-  <div clss="form-group">
-    <%= f.label :type %>
-    <%= f.radio_button :type, 'general', class: 'form-control' %>
-    <%= f.label :type, '一般', value: 'general' %>
-
-    <%= f.radio_button :type, 'admin', class: 'form-control' %>
-    <%= f.label :type, '管理者', value: 'admin' %>
-
-    <%= f.radio_button :type, 'guest', class: 'form-control' %>
-    <%= f.label :type, 'ゲスト', value: 'guest' %>
+  <div class="form-group">
+    <%= f.label :type, class: 'control-label col-sm-3' %>
+    <div class="col-sm-9">
+      <div class="col-sm-3 radio">
+        <%= f.radio_button :type, 'general' %>
+        <%= f.label :type, '一般', value: 'general' %>
+      </div>
+        <div class="col-sm-3 radio">
+        <%= f.radio_button :type, 'admin' %>
+        <%= f.label :type, '管理者', value: 'admin' %>
+        </div>
+          <div class="col-sm-3 radio">
+        <%= f.radio_button :type, 'guest' %>
+        <%= f.label :type, 'ゲスト', value: 'guest' %>
+      </div>
+    </div>
   </div>
 <% end %>
