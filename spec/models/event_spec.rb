@@ -45,10 +45,13 @@ RSpec.describe Event, type: :model do
     it { should_not be_valid }
   end
 
-  # context '開始時間よりも終了時間のほうが先の場合' do
-  #   before { event.start_time = '2015/7/19 20:00', event.end_time = '2015/7/19 18:00' }
-  #   it { should_not be_valid }
-  # end
+  context '開始時間よりも終了時間のほうが先の場合' do
+    before {
+        event.start_time = '2015/7/19 20:00'
+        event.end_time = '2015/7/19 18:00'
+    }
+    it { should_not be_valid }
+  end
 
   describe 'テーブルの制約' do
     it { should have_not_null_constraint_on(:title) }
