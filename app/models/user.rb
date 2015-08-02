@@ -13,6 +13,7 @@
 #
 
 class User < ActiveRecord::Base
+  has_many :events, dependent: :destroy, foreign_key: "create_id"
 
   # column name type を普通のcolumnとして使用する
   self.inheritance_column = :_type_disabled
