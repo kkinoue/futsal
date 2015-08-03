@@ -18,8 +18,9 @@
 //= require moment
 //= require bootstrap-datetimepicker
 
-var data = {'data-date-format': 'yyyy-MM-dd hh:mm:ss' };
 $(document).on('ready page:load', function(){
-    $('.datepicker').attr(data);
-    $('.datepicker').datetimepicker();
+    $('.datepicker').datetimepicker({
+        format : 'YYYY/MM/DD HH:mm',
+        sideBySide: true
+    });
 });
