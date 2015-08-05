@@ -2,6 +2,6 @@
 
 <ul class="events">
   <% @events.each do |event| %>
-      <li><%= event.title %> | <%= event.location %> | <%= event.start_time %> | <%= event.end_time %></li> | <%= event.create_id %>
+      <li><%= event.title %> | <%= event.location %> | <%= event.start_time %> | <%= event.end_time %></li> | <%= event.create_user.name %>
   <% end %>
 </ul>
