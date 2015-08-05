@@ -19,7 +19,8 @@ RSpec.describe User, type: :model do
   let(:user) { User.new(name:'user-name',
                         email:'user@mail.com',
                         password:'foobar',
-                        password_confirmation:'foobar') }
+                        password_confirmation:'foobar',
+                        type: 'admin') }
   subject { user }
 
   describe '属性' do
@@ -45,6 +46,9 @@ RSpec.describe User, type: :model do
       it { should have_not_null_constraint_on(:name) }
       it { should have_not_null_constraint_on(:email) }
     end
+  end
+
+  describe 'eventの登録' do
   end
 
 end

@@ -14,7 +14,18 @@
 #
 
 class Event < ActiveRecord::Base
-  belongs_to :creator, class_name: 'User'
+
+  # eventの作成者の関連
+  belongs_to :create_user, class_name: 'User', foreign_key: 'create_id'
+
+  # eventの招待者の関連
+  ## Invitation modelへの参照
+  has_many :invitations
+  ## invitationsを通しての User modelへの参照（参照のショートカット）
+  has_many :users, through: :invitations
+
+  after_create :create_invitations
+
   # 必須項目
   validates :title, presence: true
   validates :start_time, presence: true
@@ -28,6 +39,13 @@ class Event < ActiveRecord::Base
 
       if end_time < start_time
         errors.add(:end_time, "の日付を正しく記入して下さい。")
+      end
+    end
+
+    def create_invitations
+      # 作成者以外のユーザーのinvitationsレコードを作成
+      User.all.each do |user|
+        invitations.create(user: user) if create_user.id != user.id
       end
     end
 end

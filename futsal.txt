@@ -7,18 +7,18 @@ futsal
 - name
 - email
 - password
-- type (一般、管理者、ゲスト)
+- type (general 一般、admin 管理者、guest ゲスト)
 
 + Event
 - title
-- starttime
-- endtime
 - location
+- start_time
+- end_time
 - description
+- create_id (作成ユーザー) Event:User 多:1の関連
 
 + Invitation
-- attendance 出席
-- absence    欠席 booleanで出席と排他関係
+- status（attendance 出席、absence 欠席）
 - comment
 - UserとEventの多対多関連
 

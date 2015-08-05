@@ -13,10 +13,12 @@
 #
 
 class User < ActiveRecord::Base
-  has_many :events, dependent: :destroy, foreign_key: "create_id"
 
   # column name type を普通のcolumnとして使用する
   self.inheritance_column = :_type_disabled
+
+  # このユーザーが作成したeventの関連
+  has_many :events, foreign_key: 'create_id', dependent: :destroy
 
   # emailは全て小文字でDB保存
   before_save { email && email.downcase! }

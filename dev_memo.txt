@@ -9,3 +9,9 @@ test環境のDBをdev環境からコピーして構築
 # bundle exec annotate
 modelのschema情報をmodelファイルに追記（annotate gem）
 
+# rake db:migrate:reset
+develop環境のDBをクリアしてmigrateを再実行
+
+# rake db:seed
+/db/seeds.rb を実行してdevelop環境にテストデータを作成
+

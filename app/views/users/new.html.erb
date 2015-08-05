@@ -1,7 +1,9 @@
-<% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
+<% provide(:title, 'ユーザー登録') %>
+<h1>ユーザー登録</h1>
 
 <%= form_for(@user, html: { class: 'form-horizontal col-md-8 col-md-offset-2' } ) do |f| %>
   <%= render 'fields', f: f %>
-  <%= f.submit "Create my account", class: "btn btn-lg btn-primary" %>
+  <div class="col-md-6 col-md-offset-3">
+    <%= f.submit 'ユーザーを登録', class: 'btn btn-lg btn-primary' %>
+  </div>
 <% end %>
