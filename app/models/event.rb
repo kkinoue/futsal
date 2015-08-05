@@ -14,6 +14,7 @@
 #
 
 class Event < ActiveRecord::Base
+  belongs_to :creator, class_name: 'User'
   # 必須項目
   validates :title, presence: true
   validates :start_time, presence: true
