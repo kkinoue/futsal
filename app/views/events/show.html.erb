@@ -22,7 +22,7 @@
   </div>
 </div>
 <div class="col-md-4">
-  <% if @event.create_user.admin? %>
+  <% if current_user.admin? %>
       <%= link_to '編集', edit_event_path(@event), class: 'btn btn-primary' %>
       <%= link_to '削除', event_path(@event), class: 'btn btn-danger', method: :delete, data: { confirm: '削除してよろしいですか？'} %>
   <% end %>
