@@ -16,3 +16,6 @@ ja:
         type: 区分
         password: パスワード
         password_confirmation: パスワードの確認
+  will_paginate:
+    previous_label: "&#8592; 前へ"
+    next_label: "次へ &#8594;"

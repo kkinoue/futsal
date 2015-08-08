@@ -2,7 +2,9 @@ class EventsController < ApplicationController
   before_action :signed_in_user, only: [:create, :new]
 
   def index
-    @events = Event.where('start_time > ?', Time.zone.now).order(:start_time)
+    @events = Event.where('start_time > ?', Time.zone.now)
+                  .order(:start_time)
+                  .paginate(page: params[:page], :per_page => 10)
   end
 
   def new
@@ -38,7 +40,7 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    @event = current_user.events.find(params[:id])
+    @event = Event.find(params[:id])
     @event.destroy!
     flash[:success] = 'イベントを削除しました'
     redirect_to @event
