@@ -1,10 +1,28 @@
 <% provide(:title, @event.title) %>
-<div class="row">
-  <aside class="col-md-4">
-    <section>
-      <h1>
-        <%= @event.title %> | <%= @event.location %> | <%= @event.start_time %> | <%= @event.end_time %> | <%= @event.create_user.name %>
-      </h1>
-    </section>
-  </aside>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <%= @event.title %>
+  </div>
+  <div class="panel-body">
+    場所：<%= @event.location %>
+  </div>
+  <div class="panel-body">
+    日時：<%= @event.start_time.strftime('%Y/%m/%d') %> - <%= @event.end_time.strftime('%Y/%m/%d') %>
+  </div>
+  <div class="panel-body">
+    時刻：<%= @event.start_time.strftime('%H:%M') %> - <%= @event.end_time.strftime('%H:%M') %>
+  </div>
+  <div class="panel-body">
+    備考：<%= @event.description %>
+  </div>
+  <div class="panel-body">
+    作成者：<%= @event.create_user.name %>
+  </div>
+</div>
+<div class="col-md-4">
+  <% if @event.create_user.admin? %>
+      <%= link_to '編集', edit_event_path(@event), class: 'btn btn-primary' %>
+      <%= link_to '削除', event_path(@event), class: 'btn btn-danger', method: :delete, data: { confirm: '削除してよろしいですか？'} %>
+  <% end %>
 </div>

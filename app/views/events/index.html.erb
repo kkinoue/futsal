@@ -1,7 +1,17 @@
-<h1>All events</h1>
+<h1>イベント一覧</h1>
 
-<ul class="events">
+<div class="list-group">
   <% @events.each do |event| %>
-      <li><%= event.title %> | <%= event.location %> | <%= event.start_time %> | <%= event.end_time %></li> | <%= event.create_user.name %>
+      <%= link_to(event, class: 'list-group-item') do %>
+          <h4 class="list-group-item-heading">
+            <%= event.title %>
+          </h4>
+          <p class="list-group-item-text">
+            <%= event.start_time.strftime('%Y/%m/%d %H:%M') %> - <%= event.end_time.strftime('%Y/%m/%d %H:%M') %>
+          </p>
+          <p class="list-group-item-text">
+            <%= event.location %>
+          </p>
+      <% end %>
   <% end %>
-</ul>
+</div>

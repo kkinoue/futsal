@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_action :signed_in_user, only: [:create, :new]
 
   def index
-    @events = Event.all
+    @events = Event.where('start_time > ?', Time.zone.now).order(:start_time)
   end
 
   def new
@@ -16,11 +16,32 @@ class EventsController < ApplicationController
   def create
     @event = current_user.events.build(event_params)
     if @event.save
-      flash[:success] = 'イベント作成完了'
+      flash[:success] = 'イベントを作成しました'
       redirect_to @event
     else
-      render 'new'
+      render :new
     end
+  end
+
+  def edit
+    @event = current_user.events.find(params[:id])
+  end
+
+  def update
+    @event = current_user.events.find(params[:id])
+    if @event.save
+      flash[:success] = 'イベントを更新しました'
+      redirect_to @event
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @event = current_user.events.find(params[:id])
+    @event.destroy!
+    flash[:success] = 'イベントを削除しました'
+    redirect_to @event
   end
 
   private
