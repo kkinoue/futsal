@@ -19,3 +19,8 @@ ja:
   will_paginate:
     previous_label: "&#8592; 前へ"
     next_label: "次へ &#8594;"
+  helpers:
+    label:
+      session:
+        email: メールアドレス
+        password: パスワード
