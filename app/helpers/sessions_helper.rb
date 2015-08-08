@@ -41,7 +41,8 @@ module SessionsHelper
   def signed_in_user
     unless signed_in?
       store_location
-      redirect_to signin_url, notice: "ログインしてください"
+      flash[:info] = 'ログインしてください'
+      redirect_to signin_url
     end
   end
 

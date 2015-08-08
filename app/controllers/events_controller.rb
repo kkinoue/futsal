@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :signed_in_user, only: [:create, :new]
+  before_action :signed_in_user, only: [:create, :new, :index, :show]
 
   def index
     @events = Event.where('start_time > ?', Time.zone.now)

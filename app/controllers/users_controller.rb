@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :signed_in_user, only: [:index, :show]
 
   def index
     @users = User.all
@@ -15,6 +16,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      sign_in @user
       flash[:success] = 'アカウト作成完了'
       redirect_to @user
     else
