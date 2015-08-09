@@ -1,31 +1,35 @@
 <% provide(:title, @event.title) %>
 <h1>イベント詳細</h1>
-<div class="col-md-12">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <%= @event.title %>
-    </div>
-    <div class="panel-body">
-      場所：<%= @event.location %>
-    </div>
-    <div class="panel-body">
-      日時：<%= @event.start_time.strftime('%Y/%m/%d') %> - <%= @event.end_time.strftime('%Y/%m/%d') %>
-    </div>
-    <div class="panel-body">
-      時刻：<%= @event.start_time.strftime('%H:%M') %> - <%= @event.end_time.strftime('%H:%M') %>
-    </div>
-    <div class="panel-body">
-      備考：<%= @event.description %>
-    </div>
-    <div class="panel-body">
-      作成者：<%= @event.create_user.name %>
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <%= @event.title %>
+      </div>
+      <div class="panel-body">
+        場所：<%= @event.location %>
+      </div>
+      <div class="panel-body">
+        日時：<%= @event.start_time.strftime('%Y/%m/%d') %> - <%= @event.end_time.strftime('%Y/%m/%d') %>
+      </div>
+      <div class="panel-body">
+        時刻：<%= @event.start_time.strftime('%H:%M') %> - <%= @event.end_time.strftime('%H:%M') %>
+      </div>
+      <div class="panel-body">
+        備考：<%= @event.description %>
+      </div>
+      <div class="panel-body">
+        作成者：<%= @event.create_user.name %>
+      </div>
     </div>
   </div>
 </div>
-<div class="col-md-12">
-  <%= link_to '戻る', events_path, class: 'btn btn-primary' %>
-  <% if current_user.admin? %>
-      <%= link_to '編集', edit_event_path(@event), class: 'btn btn-primary' %>
-      <%= link_to '削除', event_path(@event), class: 'btn btn-danger', method: :delete, data: { confirm: '削除してよろしいですか？'} %>
-  <% end %>
+<div class="row">
+  <div class="col-md-12">
+    <%= link_to '戻る', events_path, class: 'btn btn-primary' %>
+    <% if current_user.admin? %>
+        <%= link_to '編集', edit_event_path(@event), class: 'btn btn-primary' %>
+        <%= link_to '削除', event_path(@event), class: 'btn btn-danger', method: :delete, data: { confirm: '削除してよろしいですか？'} %>
+    <% end %>
+  </div>
 </div>
