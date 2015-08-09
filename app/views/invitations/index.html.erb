@@ -1,0 +1,27 @@
+<% provide(:title, '出欠一覧') %>
+<h1>出欠一覧</h1>
+
+<div>
+  <%= @event.title %>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>Eメール</th>
+      <th>出欠</th>
+      <th>コメント</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @invitations.each do |invitation| %>
+    <tr>
+      <td><%= invitation.user.name %></td>
+      <td><%= invitation.user.email %></td>
+      <td><%= invitation.status %></td>
+      <td><%= invitation.comment %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

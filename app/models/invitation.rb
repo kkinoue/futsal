@@ -14,4 +14,21 @@
 class Invitation < ActiveRecord::Base
   belongs_to :user
   belongs_to :event
+
+  def attendance?
+    status == '出席'
+  end
+
+  def absence?
+    status == '欠席'
+  end
+
+  def attend
+    self.status = '出席'
+  end
+
+  def be_absent
+    self.status = '欠席'
+  end
+
 end

@@ -32,6 +32,16 @@ class Event < ActiveRecord::Base
   validates :end_time, presence: true
   validate  :start_end_check
 
+  # 引数ユーザーはこのイベントの招待者か？
+  def invitees?(user)
+    # !!はboolean型に変換するイディオム。nil,falseがfalse,それ以外はtrueに変換する。
+    !!Invitation.find_by(event_id: id, user_id: user.id)
+  end
+
+  def find_invitation_by_user(user)
+    Invitation.find_by(event_id: id, user_id: user.id)
+  end
+
   private
 
     def start_end_check

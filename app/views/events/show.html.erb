@@ -30,6 +30,10 @@
     <% if current_user.admin? %>
         <%= link_to '編集', edit_event_path(@event), class: 'btn btn-primary' %>
         <%= link_to '削除', event_path(@event), class: 'btn btn-danger', method: :delete, data: { confirm: '削除してよろしいですか？'} %>
+        <%= link_to '出欠一覧', invitations_event_path(@event), class: 'btn btn-primary' %>
+    <% end %>
+    <% if @event.invitees?(current_user) %>
+        <%= link_to '出欠登録', invitation_path(@event.find_invitation_by_user(current_user)), class: 'btn btn-primary' %>
     <% end %>
   </div>
 </div>
