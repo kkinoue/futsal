@@ -6,7 +6,14 @@ Rails.application.routes.draw do
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  resources :events
+  resources :events do
+    member do
+      match '/invitations', to: 'invitations#index', via: 'get'
+    end
+  end
+
+  resources :invitations, only: [:edit, :update]
+  match '/invitations/:id', to: 'invitations#edit', via: 'get'
 
   root 'users#index'
 

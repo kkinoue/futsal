@@ -13,7 +13,9 @@
             <li><%= link_to 'イベント', events_path %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-               aria-haspopup="true" aria-expanded="false">ユーザー設定<span class="caret"></span></a>
+               aria-haspopup="true" aria-expanded="false">
+              <%= current_user.name %>
+              <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="#">編集</a></li>
               <li role="separator" class="divider"></li>
