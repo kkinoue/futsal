@@ -26,11 +26,11 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = current_user.events.find(params[:id])
+    @event = Event.find(params[:id])
   end
 
   def update
-    @event = current_user.events.find(params[:id])
+    @event = Event.find(params[:id])
     if @event.save
       flash[:success] = 'イベントを更新しました'
       redirect_to @event
