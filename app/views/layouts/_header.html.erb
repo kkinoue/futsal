@@ -5,7 +5,6 @@
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to 'ホーム', root_path %></li>
-        <li><%= link_to 'ユーザー登録', signup_path %></li>
         <% if signed_in? %>
             <% if current_user.admin? %>
                 <li><%= link_to 'イベント登録', new_event_url %></li>
@@ -23,6 +22,7 @@
             </ul>
           </li>
         <% else %>
+          <li><%= link_to 'ユーザー登録', signup_path %></li>
           <li><%= link_to 'サインイン', signin_path %></li>
         <% end %>
       </ul>

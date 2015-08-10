@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :signed_in_user, only: [:create, :new, :index, :show]
+  before_action :admin_user, only: [:create, :new]
 
   def index
     @events = Event.where('start_time > ?', Time.zone.now)
@@ -31,7 +32,7 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
-    if @event.save
+    if @event.update(event_params)
       flash[:success] = 'イベントを更新しました'
       redirect_to @event
     else
