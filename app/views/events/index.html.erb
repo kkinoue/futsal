@@ -4,19 +4,36 @@
   <div class="col-md-12">
     <div class="list-group">
       <% @events.each do |event| %>
-          <%= link_to(event, class: 'list-group-item') do %>
+          <% if event.id % 2 == 0 %>
+              <%= link_to "欠席", '#', class: "btn btn-default glyphicon glyphicon-user" %>
+          <% else %>
+              <%= link_to "参加", '#', class: "btn btn-primary glyphicon glyphicon-user" %>
+          <% end %>
+          <%= link_to event, {class: 'list-group-item', style:'margin-bottom:20px;'} do %>
               <h4 class="list-group-item-heading">
                 <%= event.title %>
               </h4>
-              <p class="list-group-item-text">
-                <%= event.start_time.strftime('%Y/%m/%d %H:%M') %> - <%= event.end_time.strftime('%Y/%m/%d %H:%M') %>
-              </p>
-              <p class="list-group-item-text">
-                <%= event.location %>
-              </p>
+              <div class="row">
+                <div class="col-md-6">
+                  <p class="list-group-item-text">
+                    <%= event.start_time.strftime('%Y/%m/%d %H:%M') %> - <%= event.end_time.strftime('%Y/%m/%d %H:%M') %>
+                  </p>
+                  <p class="list-group-item-text">
+                    <%= event.location %>
+                  </p>
+                </div>
+                <div class="col-md-6">
+                  <p class="list-group-item-text">
+                    募集：○○ 名︎
+                  </p>
+                  <p class="list-group-item-text">
+                    残り：○○ 名︎
+                  </p>
+                </div>
+              </div>
           <% end %>
       <% end %>
-      <%= will_paginate @events %>
     </div>
+    <%= will_paginate @events %>
   </div>
 </div>
