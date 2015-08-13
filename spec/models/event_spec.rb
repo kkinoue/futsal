@@ -2,15 +2,16 @@
 #
 # Table name: events
 #
-#  id          :integer          not null, primary key
-#  title       :string           not null
-#  start_time  :datetime         not null
-#  location    :string
-#  description :string
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  end_time    :datetime         not null
-#  create_id   :integer
+#  id             :integer          not null, primary key
+#  title          :string           not null
+#  start_time     :datetime         not null
+#  location       :string
+#  description    :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  end_time       :datetime         not null
+#  create_id      :integer
+#  wanted_persons :integer
 #
 
 require 'rails_helper'

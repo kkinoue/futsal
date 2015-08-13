@@ -9,7 +9,8 @@ ja:
         start_time: 開始時間
         end_time: 終了時間
         location: 場所
-        description: 説明
+        wanted_persons: 募集人数
+        description: 備考
       user:
         name: 名前
         email: メールアドレス

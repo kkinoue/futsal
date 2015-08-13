@@ -16,15 +16,18 @@
               <div class="row">
                 <div class="col-md-6">
                   <p class="list-group-item-text">
-                    <%= event.start_time.strftime('%Y/%m/%d %H:%M') %> - <%= event.end_time.strftime('%Y/%m/%d %H:%M') %>
+                    日時：<%= event.start_time.strftime('%Y/%m/%d') %> - <%= event.end_time.strftime('%Y/%m/%d') %>
                   </p>
                   <p class="list-group-item-text">
-                    <%= event.location %>
+                    時刻：<%= event.start_time.strftime('%H:%M') %> - <%= event.end_time.strftime('%H:%M') %>
+                  </p>
+                  <p class="list-group-item-text">
+                    場所：<%= event.location %>
                   </p>
                 </div>
                 <div class="col-md-6">
                   <p class="list-group-item-text">
-                    募集：○○ 名︎
+                    募集：<%= event.wanted_persons %> 名︎
                   </p>
                   <p class="list-group-item-text">
                     残り：○○ 名︎
