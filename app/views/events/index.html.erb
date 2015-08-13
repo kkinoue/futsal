@@ -4,17 +4,17 @@
   <div class="col-md-12">
     <div class="list-group">
       <% @events.each do |event| %>
-          <% if event.find_invitation_by_user(current_user).attendance? %>
-              <%= link_to "参加", '#', class: "btn btn-primary glyphicon glyphicon-user" %>
-          <% else %>
-              <%= link_to "欠席", '#', class: "btn btn-default glyphicon glyphicon-user" %>
-          <% end %>
+          <!--<% if event.find_invitation_by_user(current_user).attendance? %>-->
+              <!--<%= link_to "参加", '#', class: "btn btn-primary glyphicon glyphicon-user" %>-->
+          <!--<% else %>-->
+              <!--<%= link_to "欠席", '#', class: "btn btn-default glyphicon glyphicon-user" %>-->
+          <!--<% end %>-->
           <%= link_to event, {class: 'list-group-item', style:'margin-bottom:20px;'} do %>
-              <!--<% if event.find_invitation_by_user(current_user).attendance? %>-->
-                  <!--<span class="label label-default glyphicon glyphicon-user">欠席</span>-->
-              <!--<% else %>-->
-                  <!--<span class="label label-primary glyphicon glyphicon-user">参加</span>-->
-              <!--<% end %>-->
+              <% if event.find_invitation_by_user(current_user).attendance? %>
+                  <span class="label label-default glyphicon glyphicon-user">欠席</span>
+              <% else %>
+                  <span class="label label-primary glyphicon glyphicon-user">参加</span>
+              <% end %>
               <h4 class="list-group-item-heading">
                 <%= event.title %>
               </h4>
