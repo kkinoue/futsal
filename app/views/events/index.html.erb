@@ -31,12 +31,18 @@
                   </p>
                 </div>
                 <div class="col-md-6">
-                  <p class="list-group-item-text">
-                    募集：<%= event.wanted_persons %> 名︎
-                  </p>
-                  <p class="list-group-item-text">
-                    残り：○○ 名︎
-                  </p>
+                  <% if event.wanted_persons %>
+                      <p class="list-group-item-text">
+                        募集：<%= event.wanted_persons %> 名︎
+                      </p>
+                      <p class="list-group-item-text">
+                        残り：<%= event.remain %> 名︎
+                      </p>
+                  <% else %>
+                      <p class="list-group-item-text">
+                        参加：<%= event.attendance %> 名︎
+                      </p>
+                  <% end %>
                 </div>
               </div>
           <% end %>

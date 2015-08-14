@@ -19,7 +19,10 @@
         募集：<%= @event.wanted_persons %> 名
       </div>
       <div class="panel-body">
-        残り：○○ 名
+        参加：<%= @event.attendance %> 名
+      </div>
+      <div class="panel-body">
+        残り：<%= @event.remain %> 名
       </div>
       <div class="panel-body">
         備考：<%= @event.description %>

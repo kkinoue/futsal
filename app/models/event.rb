@@ -43,6 +43,15 @@ class Event < ActiveRecord::Base
     Invitation.find_by(event_id: id, user_id: user.id)
   end
 
+  def remain
+    return unless wanted_persons
+    wanted_persons - attendance
+  end
+
+  def attendance
+    Invitation.where(status: '出席', event: id).count
+  end
+
   private
 
     def start_end_check
