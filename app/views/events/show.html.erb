@@ -9,21 +9,31 @@
       <div class="panel-body">
         場所：<%= @event.location %>
       </div>
-      <div class="panel-body">
-        日時：<%= @event.start_time.strftime('%Y/%m/%d') %> - <%= @event.end_time.strftime('%Y/%m/%d') %>
-      </div>
-      <div class="panel-body">
-        時刻：<%= @event.start_time.strftime('%H:%M') %> - <%= @event.end_time.strftime('%H:%M') %>
-      </div>
-      <div class="panel-body">
-        募集：<%= @event.wanted_persons %> 名
-      </div>
+      <% if @event.is_over_several_days? %>
+          <div class="panel-body">
+            日時：<%= @event.datetime %>
+          </div>
+      <% else %>
+          <div class="panel-body">
+            日時：<%= @event.date %>
+          </div>
+          <div class="panel-body">
+            時刻：<%= @event.time %>
+          </div>
+      <% end %>
+      <% if @event.wanted_persons %>
+          <div class="panel-body">
+            募集：<%= @event.wanted_persons %> 名
+          </div>
+      <% end %>
       <div class="panel-body">
         参加：<%= @event.attendance %> 名
       </div>
-      <div class="panel-body">
-        残り：<%= @event.remain %> 名
-      </div>
+      <% if @event.wanted_persons %>
+          <div class="panel-body">
+            残り：<%= @event.remain %> 名
+          </div>
+      <% end %>
       <div class="panel-body">
         備考：<%= @event.description %>
       </div>

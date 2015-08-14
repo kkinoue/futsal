@@ -48,6 +48,23 @@ class Event < ActiveRecord::Base
     wanted_persons - attendance
   end
 
+  def date
+    return start_time.strftime('%Y/%m/%d') if start_time.strftime('%Y/%m/%d') == end_time.strftime('%Y/%m/%d')
+    start_time.strftime('%Y/%m/%d') + ' - ' + end_time.strftime('%Y/%m/%d')
+  end
+
+  def time
+    start_time.strftime('%H:%M') + ' - ' + end_time.strftime('%H:%M')
+  end
+
+  def datetime
+    start_time.strftime('%Y/%m/%d %H:%M') + ' - ' + end_time.strftime('%Y/%m/%d %H:%M')
+  end
+
+  def is_over_several_days?
+    start_time.strftime('%Y/%m/%d') != end_time.strftime('%Y/%m/%d')
+  end
+
   def attendance
     Invitation.where(status: '出席', event: id).count
   end

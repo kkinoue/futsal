@@ -10,10 +10,10 @@
       場所：<%= @invitation.event.location %>
     </div>
     <div class="panel-body">
-      日時：<%= @invitation.event.start_time.strftime('%Y/%m/%d') %> - <%= @invitation.event.end_time.strftime('%Y/%m/%d') %>
+      日時：<%= @invitation.event.date %>
     </div>
     <div class="panel-body">
-      時刻：<%= @invitation.event.start_time.strftime('%H:%M') %> - <%= @invitation.event.end_time.strftime('%H:%M') %>
+      時刻：<%= @invitation.event.time %>
     </div>
     <div class="panel-body">
       備考：<%= @invitation.event.description %>
