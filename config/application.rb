@@ -32,6 +32,10 @@ module Futsal
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
-    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+    config.assets.compile = true
+    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif *.eot *.woff *.woff2 *.ttf *.svg)
+
+    config.assets.paths << "#{Rails}/vendor/assets/fonts"
+
   end
 end
