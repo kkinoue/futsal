@@ -1,3 +1,8 @@
+<% if event_item.find_invitation_by_user(current_user).present? and event_item.find_invitation_by_user(current_user).attendance? %>
+    <span class="label label-primary glyphicon glyphicon-user">参加</span>
+<% else %>
+    <span class="label label-default glyphicon glyphicon-user">欠席</span>
+<% end %>
 <h4 class="list-group-item-heading">
   <%= event_item.title %>
 </h4>
