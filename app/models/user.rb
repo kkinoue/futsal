@@ -69,6 +69,11 @@ class User < ActiveRecord::Base
         .order(:start_time)
   end
 
+  def attended_in_past
+    Event.joins(:invitations).where('start_time <= ? and user_id = ?', Time.zone.now, id)
+        .order(:start_time)
+  end
+
   private
 
     def create_remember_token
