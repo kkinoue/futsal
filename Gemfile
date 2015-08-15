@@ -16,7 +16,9 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 
-gem 'bootstrap-sass'
+#gemアンインストールコマンド : gem uninstall 'bootstrap-sass'
+#gem 'bootstrap-sass'
+
 gem 'sprockets'
 #gem 'bcrypt-ruby' # 暗号化
 gem 'faker' # ダミーデータ作成
