@@ -52,6 +52,8 @@ group :development, :test do
   # modelにschema情報を追記してくれるgem
   # 実行方法：bundle exec annotate
   gem 'annotate'
+
+  gem 'rails-erd'
 end
 
 group :test do

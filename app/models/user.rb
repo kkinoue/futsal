@@ -62,6 +62,13 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
 
+  def attend_events
+    # current_user.attend_eventsって書いたら英語っぽいかなと思ってuserに作りたいと思ったけど
+    # 素直にeventの中に作ったほうがいいいのかも。
+    Event.joins(:invitations).where('start_time > ? and user_id = ?', Time.zone.now, id)
+        .order(:start_time)
+  end
+
   private
 
     def create_remember_token

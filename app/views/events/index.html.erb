@@ -5,9 +5,9 @@
     <div class="list-group">
       <% @events.each do |event| %>
           <% if event.find_invitation_by_user(current_user).present? and event.find_invitation_by_user(current_user).attendance? %>
-              <%= link_to "参加", '#', class: "btn btn-primary glyphicon glyphicon-user" %>
+              <%= link_to "参加", '#', class: "btn btn-primary disabled glyphicon glyphicon-user" %>
           <% else %>
-              <%= link_to "欠席", '#', class: "btn btn-default glyphicon glyphicon-user" %>
+              <%= link_to "欠席", '#', class: "btn btn-default disabled glyphicon glyphicon-user" %>
           <% end %>
           <%= link_to event, {class: 'list-group-item', style:'margin-bottom:20px;'} do %>
               <!--<% if event.find_invitation_by_user(current_user).present? and event.find_invitation_by_user(current_user).attendance? %>-->
