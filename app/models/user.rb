@@ -65,12 +65,12 @@ class User < ActiveRecord::Base
   def attend_events
     # current_user.attend_eventsって書いたら英語っぽいかなと思ってuserに作りたいと思ったけど
     # 素直にeventの中に作ったほうがいいいのかも。
-    Event.joins(:invitations).where('start_time > ? and user_id = ?', Time.zone.now, id)
+    Event.joins(:invitations).where('start_time > ? and user_id = ? and status = ?', Time.zone.now, id, '出席')
         .order(:start_time)
   end
 
   def attended_in_past
-    Event.joins(:invitations).where('start_time <= ? and user_id = ?', Time.zone.now, id)
+    Event.joins(:invitations).where('start_time <= ? and user_id = ? and status = ?', Time.zone.now, id, '出席')
         .order(:start_time)
   end
 

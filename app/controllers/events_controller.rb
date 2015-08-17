@@ -7,6 +7,7 @@ class EventsController < ApplicationController
                   .order(:start_time)
                   .paginate(page: params[:page], :per_page => 10)
     @past_events = Event.where('start_time <= ?', Time.zone.now)
+                       .order(:start_time)
                         .paginate(page: params[:page], :per_page => 10)
 
   end
