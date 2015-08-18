@@ -2,7 +2,7 @@ class InvitationsController < ApplicationController
 
   def index
     @event = Event.find(params[:id])
-    @invitations = @event.invitations
+    @invitations = @event.invitations.includes(:user)
   end
 
   def edit
