@@ -11,12 +11,9 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :events do
     member do
-      match '/invitations', to: 'invitations#index', via: 'get'
+      resources :invitations, only: [:index, :create, :update]
     end
   end
-
-  resources :invitations, only: [:edit, :update]
-  match '/invitations/:id', to: 'invitations#edit', via: 'get'
 
   root 'static_pages#home'
 

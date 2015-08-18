@@ -25,3 +25,12 @@ user2 = User.create(name: 'user2',
                     password: 'user2',
                     password_confirmation: 'user2',
                     type: 'general')
+
+event = Event.create(
+                  title: 'イベント１',
+                  location: '場所１',
+                  start_time: Time.zone.now.tomorrow,
+                  end_time: Time.zone.now.tomorrow,
+                  description: '',
+                  create_id: admin.id,
+                  wanted_persons: 10)
