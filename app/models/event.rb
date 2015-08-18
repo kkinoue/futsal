@@ -82,7 +82,7 @@ class Event < ActiveRecord::Base
     def create_invitations
       # 作成者以外のユーザーのinvitationsレコードを作成
       User.all.each do |user|
-        invitations.create(user: user) if create_user.id != user.id
+        invitations.create(user: user)
       end
     end
 end

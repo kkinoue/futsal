@@ -1,0 +1,8 @@
+<div class="list-group">
+  <% events.each do |event| %>
+      <%= link_to event, {class: 'list-group-item'} do %>
+          <%= render partial: 'shared/event_item', object: event %>
+      <% end %>
+  <% end %>
+</div>
+<%= will_paginate events %>

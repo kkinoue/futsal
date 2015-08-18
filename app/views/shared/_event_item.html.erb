@@ -1,0 +1,41 @@
+<% if event_item.find_invitation_by_user(current_user).present? and event_item.find_invitation_by_user(current_user).attendance? %>
+    <span class="label label-primary glyphicon glyphicon-user">参加</span>
+<% else %>
+    <span class="label label-default glyphicon glyphicon-user">欠席</span>
+<% end %>
+<h4 class="list-group-item-heading">
+  <%= event_item.title %>
+</h4>
+<div class="row">
+  <div class="col-md-6">
+    <% if event_item.is_over_several_days? %>
+        <p class="list-group-item-text">
+          日時：<%= event_item.datetime %>
+        </p>
+    <% else %>
+        <p class="list-group-item-text">
+          日時：<%= event_item.date %>
+        </p>
+        <p class="list-group-item-text">
+          時刻：<%= event_item.time %>
+        </p>
+    <% end %>
+    <p class="list-group-item-text">
+      場所：<%= event_item.location %>
+    </p>
+  </div>
+  <div class="col-md-6">
+    <% if event_item.wanted_persons %>
+        <p class="list-group-item-text">
+          募集：<%= event_item.wanted_persons %> 名︎
+        </p>
+        <p class="list-group-item-text">
+          残り：<%= event_item.remain %> 名︎
+        </p>
+    <% else %>
+        <p class="list-group-item-text">
+          参加：<%= event_item.attendance %> 名︎
+        </p>
+    <% end %>
+  </div>
+</div>

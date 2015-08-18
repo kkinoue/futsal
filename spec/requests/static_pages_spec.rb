@@ -24,4 +24,19 @@ RSpec.describe "Static pages", type: :request do
     it { should have_content('コンタクト') }
     it { should have_title('コンタクト') }
   end
+
+  it "should have the right links on the layout" do
+    visit root_path
+    click_link "About"
+    expect(page).to have_title('About Us')
+    click_link "Help"
+    expect(page).to have_title('ヘルプ')
+    click_link "Contact"
+    expect(page).to have_title('コンタクト')
+    click_link "ホーム"
+    click_link "ユーザー登録"
+    expect(page).to have_title('ユーザー登録')
+    click_link "Futsal"
+    expect(page).to have_title('Futsal')
+  end
 end

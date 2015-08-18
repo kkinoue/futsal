@@ -56,6 +56,11 @@ group :development, :test do
   gem 'rails-erd'
 end
 
+group :development do
+  # N+1問題の警告を出力
+  gem 'bullet'
+end
+
 group :test do
   gem 'selenium-webdriver'
   gem 'capybara'
