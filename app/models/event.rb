@@ -25,8 +25,6 @@ class Event < ActiveRecord::Base
   ## invitationsを通しての User modelへの参照（参照のショートカット）
   has_many :users, through: :invitations
 
-  after_create :create_invitations
-
   # 必須項目
   validates :title, presence: true
   validates :start_time, presence: true
@@ -79,10 +77,4 @@ class Event < ActiveRecord::Base
       end
     end
 
-    def create_invitations
-      # 作成者以外のユーザーのinvitationsレコードを作成
-      User.all.each do |user|
-        invitations.create(user: user)
-      end
-    end
 end

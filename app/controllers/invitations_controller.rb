@@ -5,8 +5,22 @@ class InvitationsController < ApplicationController
     @invitations = @event.invitations
   end
 
-  def edit
-    @invitation = Invitation.find(params[:id])
+  def create
+    @event = Event.find(params[:id])
+    @invitation = @event.invitations.build(user_id: current_user.id)
+
+    if params[:attendance]
+      @invitation.attend
+    elsif params[:absence]
+      @invitation.be_absent
+    end
+
+    @invitation.comment = params[:invitation][:comment]
+
+    if @invitation.save
+      redirect_to :back
+    end
+
   end
 
   def update

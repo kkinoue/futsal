@@ -1,0 +1,25 @@
+<%= form_for @invitation, class: 'form-horizontal', role: 'form' do |f| %>
+<div class="panel panel-<%= panel_color_by_status @invitation %>">
+
+  <div class="panel-heading"><%= @invitation.user.name %>の出欠</div>
+
+  <div class="panel-body row">
+    <div class="col-md-3">
+      <%=	f.submit '出席', name: 'attendance', class: 'btn btn-lg btn-success' + attendance_active(@invitation),
+                    data: { disable_with: '更新中･･･' } %>
+    </div>
+    <div class="col-md-3">
+      <%=	f.submit '欠席', name: 'absence',    class: 'btn btn-lg btn-danger' + absence_active(@invitation),
+                    data: { disable_with: '更新中･･･' } %>
+    </div>
+  </div>
+
+  <div class="panel-body">
+    <div class=" form-group">
+      <%= f.label :comment %>
+      <%= f.text_area :comment, class: 'form-control ', rows: 3, value: @invitation.comment %>
+    </div>
+  </div>
+
+  </div>
+<% end %>
