@@ -10,13 +10,16 @@
                 <li><%= link_to 'イベント登録', new_event_url %></li>
             <% end %>
             <li><%= link_to 'イベント', events_path %></li>
+            <% if current_user.admin? %>
+              <li><%= link_to 'ユーザー一覧', users_path %></li>
+            <% end %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                aria-haspopup="true" aria-expanded="false">
               <%= current_user.name %>
               <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="#">編集</a></li>
+              <li><%= link_to '編集', edit_user_path(current_user) %></li>
               <li role="separator" class="divider"></li>
               <li><%= link_to 'サインアウト', signout_path, method: :delete %></li>
             </ul>

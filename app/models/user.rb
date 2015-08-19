@@ -39,7 +39,9 @@ class User < ActiveRecord::Base
   # ・password
   # ・password_confirmation
   # DBには password_digest カラムに暗号化された値が保存される
-  validates :password, length: { minimum: 1 }
+  with_options if: 'password || new_record?' do |u|
+    u.validates :password, length: { minimum: 1 }
+  end
 
   def admin?
     type == 'admin'

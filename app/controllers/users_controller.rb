@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :signed_in_user, only: [:index, :show]
-  before_action :correct_user, only:[:show]
+  before_action :signed_in_user, only: [:index, :show, :edit]
+  before_action :correct_user, only:[:show, :update]
   before_action :admin_user, only: [:index]
 
   def index
@@ -11,8 +11,11 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def show
+  def edit
     @user = User.find(params[:id])
+  end
+
+  def show
   end
 
   def create
@@ -23,6 +26,18 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       render 'new'
+    end
+  end
+
+  def update
+    logger.debug '########'
+    logger.debug user_params.inspect
+    logger.debug '########'
+    if @user.update_attributes(user_params)
+      flash[:success] = '更新完了'
+      redirect_to @user
+    else
+      render 'edit'
     end
   end
 
