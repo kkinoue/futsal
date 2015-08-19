@@ -1,5 +1,6 @@
-box: wercker/ruby
- services:
+# The container definition we want to use for developing our app
+box: phusion/passenger-ruby22
+# Defining the dev pipeline
      - wercker/postgresql
  build:
      steps:
