@@ -1,0 +1,19 @@
+# The container definition we want to use for developing our app
+box: phusion/passenger-ruby22
+# Defining the dev pipeline
+dev:
+  steps:
+    # first we want to install the dependencies
+    - bundle-install
+        # then we want to run a wercker step that watches your files and reloads
+        # when changes are detected
+    - internal/watch:
+        code: |
+          bundle exec thin -R config.ru -p 8080 start
+        reload: true
+build:
+  steps:
+    - bundle-install
+    - script:
+        name: rspec
+        code: bundle exec rspec
