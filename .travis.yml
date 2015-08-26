@@ -1,0 +1,11 @@
+language: ruby
+rvm:
+- 2.2.0
+script: bundle exec rspec spec
+deploy:
+  provider: heroku
+  api_key:
+    secure: SuS5xJ3bJSozBS/fwQNC9xxayJ3KqQD4m4H1mUmpYLCObne9E+nS0x1OJGmW0a9mt2+dYFaJ0GcdrkyLp7XL1SYwd48MOr+EqCkb48WR8wnkuVRL0cjFuYtCdgp/bf3ZjoG47Z9Zn7V368j8beT5jReoYF8FHI8csAI7pWGyVrACBjOgGx2jEQiV2dHXZvLS5xVe9gel12KNRzoDeKAWePXoDtQae5yqVVDxtxkseBmQAB6HTJeTZFDIlvu+3ecJ9N34aVdrJgahzS0cs8+SkboWbVXGhcP2SNtCc9iZMWBUutFZ4a5v8k1GtqytDBlydmo8k7EoM/hhTMBLwz1goIFZssHhMP5YrD8Lwr1onczv29S9/V7zVcI0lizezUwvVCkTms5aZ8+XkhdwxQ3nBiUDDH6svT+JAIp58Ymk/4BpCSjv1cMvT7AwM9j9RCSunYlpV2xH11iZ1wnbcrPR3ufcCjDSXIgHWWu4TsoS7AanIzdqf/VPJgiXaLSWSlIFqP9oNU7b8voo6L9KIHN41uw25Rs7cK+dznKPEabZvJqfltjpjyq2GHrc79Eu0+8IRQDfTceSCmBZvlpSRxncGpirJkxDMEXEL1eaL/uNyGuwbnvsZSFyUKjAyqRDBr6UjezzGYQq4hx8MC+xFW22UADFRSXm8CrSugBUPuw8mMY=
+  app: stormy-tundra-6886
+  on:
+    repo: daiki-takeuchi/futsal
