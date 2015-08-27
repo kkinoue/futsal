@@ -1,7 +1,7 @@
 <% provide(:title, @event.title) %>
 <h1>イベント詳細</h1>
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-8">
     <div class="panel panel-default">
       <div class="panel-heading">
         <%= @event.title %>
@@ -41,6 +41,26 @@
         作成者：<%= @event.create_user.name %>
       </div>
     </div>
+  </div>
+  <div class="col-md-4">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>名前</th>
+        <th>出欠</th>
+        <th>コメント</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @event.invitations.includes(:user).each do |invitation| %>
+          <tr>
+            <td><%= invitation.user.name %></td>
+            <td><%= invitation.status %></td>
+            <td><%= invitation.comment %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
 
