@@ -4,6 +4,13 @@ RSpec.describe "Static pages", type: :request do
 
   subject { page }
 
+  describe "Home page" do
+    before { visit root_path }
+
+    it { should have_content('ホーム画面') }
+    it { should have_title('Futsal') }
+  end
+
   describe "Help page" do
     before { visit help_path }
 

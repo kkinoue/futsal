@@ -30,6 +30,14 @@ RSpec.describe Event, type: :model do
   it { should respond_to(:end_time) }
   it { should respond_to(:location) }
   it { should respond_to(:description) }
+  it { should respond_to(:invitees?) }
+  it { should respond_to(:find_invitation_by_user) }
+  it { should respond_to(:remain) }
+  it { should respond_to(:date) }
+  it { should respond_to(:time) }
+  it { should respond_to(:datetime) }
+  it { should respond_to(:is_over_several_days?) }
+  it { should respond_to(:attendance) }
 
   context 'タイトルの入力がない場合' do
     before { event.title = '' }
