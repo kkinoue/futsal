@@ -52,7 +52,7 @@
       </tr>
       </thead>
       <tbody>
-      <% @event.invitations.includes(:user).each do |invitation| %>
+      <% @event.attend_invitations.includes(:user).each do |invitation| %>
           <tr>
             <td><%= invitation.user.name %></td>
             <td><%= invitation.status %></td>

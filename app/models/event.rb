@@ -67,6 +67,10 @@ class Event < ActiveRecord::Base
     Invitation.where(status: '出席', event: id).count
   end
 
+  def attend_invitations
+    Invitation.where(status: '出席', event: id)
+  end
+
   private
 
     def start_end_check
