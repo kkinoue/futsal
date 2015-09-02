@@ -1,7 +1,21 @@
-<h1>All users</h1>
-
-<ul class="users">
+<h1>ユーザー一覧</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>メール</th>
+      <th>区分</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
   <% @users.each do |user| %>
-  <li><%= user.name %> | <%= user.email %> | <%= user.type %></li>
+    <tr>
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.type %></td>
+      <td><%= link_to '変更' %></td>
+    </tr>
   <% end %>
-</ul>
+  </tbody>
+</table>
